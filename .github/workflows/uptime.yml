@@ -51,7 +51,7 @@ jobs:
 
           check() {
             local code body age
-            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 -A 'jurma-uptime-external' https://jurma.site/__simulated-outage-test)
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 -A 'jurma-uptime-external' https://jurma.site/)
             [ "$code" = 200 ] || { echo "homepage HTTP $code"; return 1; }
             body=$(curl -s --max-time 20 -A 'jurma-uptime-external' -w '\n%{http_code}' https://jurma.site/api/public/hero-status)
             code=${body##*$'\n'}; body=${body%$'\n'*}
